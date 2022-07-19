@@ -6,7 +6,7 @@ from .models import SysTopology
 class TopologyAdmin(admin.ModelAdmin):
     list_display = (
         'title',
-        'body'
+        'allocation'
     )
 
 admin.site.register(SysTopology, TopologyAdmin)
