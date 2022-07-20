@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('itasset.urls', namespace='itasset')),
     path('auth/', include('users.urls', namespace='users')),
     path('admin/', admin.site.urls),
+    path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:

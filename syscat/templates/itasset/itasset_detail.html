@@ -12,11 +12,11 @@
       <div class="row">
         <div class="col-md-10 col-lg-8 mx-auto">
           <h2 class="section-heading">Описание системы.</h2>
-          <p>{{ itasset.description }}</p>
+          <p>{{ itasset.descriptio|safe }}</p>
 
           {% for field in itasset.field.item %}
             <h2 class="section-heading">{{ field.label }}</h2>
-            <p>{{ field.data }}</p>
+            <p>{{ field.data|safe }}</p>
           {% endfor %}
         </div>
       </div>

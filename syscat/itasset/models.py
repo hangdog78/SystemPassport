@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django_editorjs import EditorJsField
+from ckeditor.fields import RichTextField
 
 User = get_user_model()
+
 
 class ITAsset (models.Model):
     ''' Описание ИТ актива. '''
@@ -10,43 +11,45 @@ class ITAsset (models.Model):
         max_length=255,
         verbose_name='Описание ИТ актива')
     description = models.TextField(
-        verbose_name='Описание функционала'
+        verbose_name='Описание функционала',
+        help_text='Описание основного функционала'
     )
 
     # Топология.
-    allocation = EditorJsField(
-        verbose_name='Размещение'
+    allocation = RichTextField(
+        verbose_name='Размещение',
+        help_text='Информация о развертывании ассета'
     )
-    instances = EditorJsField(
+    instances = RichTextField(
         verbose_name='Сервера/инстансы'
     )
-    ipscope = EditorJsField(
+    ipscope = RichTextField(
         verbose_name='Адресное пространство'
     )
-    relations = EditorJsField(
+    relations = RichTextField(
         verbose_name='Зависимости ПО и версии'
     )
-    settings = EditorJsField(
+    settings = RichTextField(
         verbose_name='Текущие настройки'
     )
     # Конец топологии.
-    
-    components = EditorJsField(
+
+    components = RichTextField(
         verbose_name='Компоненты системы'
     )
-    management = EditorJsField(
+    management = RichTextField(
         verbose_name='Порядок управления'
     )
-    access = EditorJsField(
+    access = RichTextField(
         verbose_name='Порядок доступа'
     )
-    userlist = EditorJsField(
+    userlist = RichTextField(
         verbose_name='Учетные записи'
     )
-    regulations = EditorJsField(
+    regulations = RichTextField(
         verbose_name='Регламентные действия'
     )
-    additional_info = EditorJsField(
+    additional_info = RichTextField(
         verbose_name='Дополнительная информация',
         blank=True,
         null=True,
@@ -55,8 +58,8 @@ class ITAsset (models.Model):
         verbose_name='Дата добавления',
         auto_now_add=True
     )
-    
-    # Системное. 
+
+    # Системное.
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
