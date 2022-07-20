@@ -1,16 +1,20 @@
 from operator import ipow
-from django.shortcuts import render
+from django.shortcuts import (
+    get_object_or_404,
+    redirect,
+    render,
+    reverse
+)
+from django.forms.models import model_to_dict
 
 from .utils import _get_page
-from .models import SysTopology
+from .models import ITAsset
 
 
-# Create your views here.
-
-# Главная страница
 def index(request):
+    ''' Главная страница. '''
     template = 'itasset/index.html'
-    assets = SysTopology.objects.all()
+    assets = ITAsset.objects.all()
 
     page_obj = _get_page(request, assets)
 
@@ -19,3 +23,11 @@ def index(request):
         'pages_count': page_obj.paginator.page_range,
     }
     return render(request, template, context)
+
+def asset_detail(request, itasset_id):
+    ''' Страница ассета. '''
+    itasset = get_object_or_404(ITAsset, pk=itasset_id)
+    context = {
+        'itasset': itasset,
+    }
+    return render(request, 'itasset/itasset_detail.html', context)

@@ -1,12 +1,29 @@
 from django.contrib import admin
 
-from .models import SysTopology
+from .models import ITAsset
 
 
-class TopologyAdmin(admin.ModelAdmin):
-    list_display = (
+class ITAssetAdmin(admin.ModelAdmin):
+    list_display =  (
+        'pk',
         'title',
-        'allocation'
+        'description',
+        'allocation',
+        'instances',
+        'ipscope',
+        'relations',
+        'settings',
+        'components',
+        'management',
+        'access',
+        'userlist',
+        'regulations',
+        'additional_info',
+        'author',
+        'slug',
     )
+    list_filter = ('title', 'slug')
+    empty_value_display = '-пусто-'
+    
 
-admin.site.register(SysTopology, TopologyAdmin)
+admin.site.register(ITAsset, ITAssetAdmin)

@@ -1,0 +1,17 @@
+{% load thumbnail %}
+<div class="row">
+  <div class="col-md-10 col-lg-8">
+    <div class="post-preview">
+      <h2 class="post-title">
+        <a href="{% url 'itasset:itasset_detail' asset.id %}"> 
+          {{ asset.title }}
+        </a>
+      </h2>
+      <h4 class="post-subtitle" style="color:darkslategray ;">{{ asset.description }}</h3>
+      <p class="post-meta">{{ asset.author }} &nbsp;
+        {{ asset.created }}
+      </p>
+    </div>
+    <hr>
+  </div>
+</div>

@@ -6,6 +6,8 @@ app_name = 'itasset'
 
 
 urlpatterns = [
-# Главная страница.
+    # Главная страница.
     path('', views.index, name='main'),
+    # Подробно ассет
+    path('itasset/<int:itasset_id>/', views.asset_detail, name='itasset_detail'),
 ]

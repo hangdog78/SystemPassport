@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ItassetConfig(AppConfig):
+class ITAssetConfig(AppConfig):
     name = 'itasset'
