@@ -20,4 +20,5 @@ class ITAssetForm(forms.ModelForm):
         model = ITAsset
         fields = ('title',
                   'description',
-                  'allocation')
+                  'allocation',
+                  'image')

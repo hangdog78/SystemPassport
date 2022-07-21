@@ -1,23 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}
   Последние обновления на сайте
-{% endblock %}
+{% endblock title %}
 {% block content %}
-  <div class="container py-5">
-    <h2>Последние ассеты:</h2>
-    <br />
-    {% load cache %}
-    {% cache 20 index_page page_obj.number %}
-    {% include 'includes/paginator.html' %}
-    {% for asset in page_obj %}
-      {% include 'includes/assetcard.html' %}
-      <br />
-    {% endfor %}
-    <div class="clearfix">
-      <button class="btn btn-primary float-end" type="button">Older Posts&nbsp;⇒</button>
-    </div>
-
-    {% include 'includes/paginator.html' %}
+  <h2>Последние активы:</h2>
+  {% load cache %}
+  {% cache 20 index_page page_obj.number %}
+  {% for asset in page_obj|slice:'-3:' %}
+    {% include 'includes/assetcard.html' %}
+  {% endfor %}
+  <div class="clearfix">
+    <a class="btn btn-outline-primary float-end" role="button" 
+    href="{% url 'itasset:itasset_list' %}">Все активы&nbsp;⇒
+    </a>
   </div>
   {% endcache %}
-{% endblock %}
+{% endblock content %}

@@ -1,17 +1,21 @@
 {% load thumbnail %}
-<div class="row">
-  <div class="col-md-10 col-lg-8">
-    <div class="post-preview">
-      <h2 class="post-title">
-        <a href="{% url 'itasset:itasset_detail' asset.id %}"> 
-          {{ asset.title }}
-        </a>
-      </h2>
-      <h4 class="post-subtitle" style="color:darkslategray ;">{{ asset.description }}</h3>
-      <p class="post-meta">{{ asset.author }} &nbsp;
-        {{ asset.created }}
-      </p>
+    <div class="row gy-4 gy-md-0">
+        <div class="col-md-6">
+            <div class="p-xl-5 m-xl-5">
+               {% thumbnail asset.image "400x400" crop="center" upscale=False as im %}
+              <img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="{{ im.url }}">
+              {% endthumbnail %}
+              </div>
+        </div>
+        <div class="col-md-6 d-md-flex align-items-md-center">
+            <div style="max-width: 650px;">
+                <h2 class="text-uppercase fw-bold"> {{ asset.title }}</h2>
+                <p class="my-3" style="color:darkslategray;">{{ asset.description }}</p>
+                <p class="post-meta" style="color:#6c757d; font-size: 18px;font-style: italic;">Добавлено: {{ asset.author }} &nbsp;
+                {{ asset.created }}
+                </p>
+                <a class="btn btn-outline-primary" role="button" 
+                href="{% url 'itasset:itasset_detail' asset.id %}"> Подробно </a>
+            </div>
+        </div>
     </div>
-    <hr>
-  </div>
-</div>

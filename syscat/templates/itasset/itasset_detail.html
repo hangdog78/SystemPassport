@@ -12,12 +12,19 @@
       <div class="row">
         <div class="col-md-10 col-lg-8 mx-auto">
           <h2 class="section-heading">Описание системы.</h2>
-          <p>{{ itasset.descriptio|safe }}</p>
-
-          {% for field in itasset.field.item %}
-            <h2 class="section-heading">{{ field.label }}</h2>
-            <p>{{ field.data|safe }}</p>
-          {% endfor %}
+          <p>{{ itasset.description|safe }}</p>
+          <h2 class="section-heading">Описание топологии.</h2>
+          <p>{{ itasset.allocation|safe }}</p>
+          <p>{{ itasset.instances|safe }}</p>
+          <p>{{ itasset.ipscope|safe }}</p>
+          <p>{{ itasset.relations|safe }}</p>
+          <p>{{ itasset.settings|safe }}</p>
+          <h2 class="section-heading">Компоненты системы.</h2>
+          <p>{{ itasset.components|safe }}</p>
+          <h2 class="section-heading">Порядок управления.</h2>
+          <p>{{ itasset.management|safe }}</p>
+          <h2 class="section-heading">Управление доступом.</h2>
+          <p>{{ itasset.access|safe }}</p>
         </div>
       </div>
     </div>

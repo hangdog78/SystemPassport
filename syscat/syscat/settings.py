@@ -144,7 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PAGE_SIZE = 10
+PAGE_SIZE = 5
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 

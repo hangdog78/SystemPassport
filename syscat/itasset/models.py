@@ -21,45 +21,63 @@ class ITAsset (models.Model):
         help_text='Информация о развертывании ассета'
     )
     instances = RichTextField(
-        verbose_name='Сервера/инстансы'
+        verbose_name='Сервера/инстансы',
+        blank=True,
+        null=True,
     )
     ipscope = RichTextField(
-        verbose_name='Адресное пространство'
+        verbose_name='Адресное пространство',
+        blank=True,
+        null=True,
     )
     relations = RichTextField(
-        verbose_name='Зависимости ПО и версии'
+        verbose_name='Зависимости ПО и версии',
+        blank=True,
+        null=True,
     )
     settings = RichTextField(
-        verbose_name='Текущие настройки'
+        verbose_name='Текущие настройки',
+        blank=True,
+        null=True,
     )
     # Конец топологии.
 
     components = RichTextField(
-        verbose_name='Компоненты системы'
+        verbose_name='Компоненты системы',
+        blank=True,
+        null=True,
     )
     management = RichTextField(
-        verbose_name='Порядок управления'
+        verbose_name='Порядок управления',
+        blank=True,
+        null=True,
     )
     access = RichTextField(
-        verbose_name='Порядок доступа'
+        verbose_name='Порядок доступа',
+        blank=True,
+        null=True,
     )
     userlist = RichTextField(
-        verbose_name='Учетные записи'
+        verbose_name='Учетные записи',
+        blank=True,
+        null=True,
     )
     regulations = RichTextField(
-        verbose_name='Регламентные действия'
+        verbose_name='Регламентные действия',
+        blank=True,
+        null=True,
     )
     additional_info = RichTextField(
         verbose_name='Дополнительная информация',
         blank=True,
         null=True,
     )
+
+    # Системное.
     created = models.DateTimeField(
         verbose_name='Дата добавления',
         auto_now_add=True
     )
-
-    # Системное.
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -70,6 +88,12 @@ class ITAsset (models.Model):
         verbose_name='URL идентификатор',
         unique=True
     )
+    image = models.ImageField(
+        'Баннер актива',
+        upload_to='itasset/',
+        blank=True
+    )
+
 
     def __str__(self):
         return self.title
