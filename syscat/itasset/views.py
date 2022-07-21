@@ -42,8 +42,6 @@ def asset_create(request):
             post.created = timezone.now()
             post.author = request.user
             post.slug = slugify(post.title)
-            banner = request.POST.get("image")
-            post.image = banner
             post.save()
             form.save_m2m()
             return redirect(reverse('itasset:main'))
@@ -57,7 +55,7 @@ def asset_create(request):
 
 
 @login_required(login_url='users:login')
-def itasset_list (request):
+def itasset_list(request):
     template = 'itasset/group_assets.html'
     assets = ITAsset.objects.all().order_by('title')
 
@@ -67,4 +65,4 @@ def itasset_list (request):
         'page_obj': page_obj,
         'pages_count': page_obj.paginator.page_range,
     }
-    return render(request, template, context) 
+    return render(request, template, context)

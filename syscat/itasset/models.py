@@ -23,54 +23,44 @@ class ITAsset (models.Model):
     instances = RichTextField(
         verbose_name='Сервера/инстансы',
         blank=True,
-        null=True,
     )
     ipscope = RichTextField(
         verbose_name='Адресное пространство',
         blank=True,
-        null=True,
     )
     relations = RichTextField(
         verbose_name='Зависимости ПО и версии',
         blank=True,
-        null=True,
     )
     settings = RichTextField(
         verbose_name='Текущие настройки',
         blank=True,
-        null=True,
     )
     # Конец топологии.
 
     components = RichTextField(
         verbose_name='Компоненты системы',
         blank=True,
-        null=True,
     )
     management = RichTextField(
         verbose_name='Порядок управления',
         blank=True,
-        null=True,
     )
     access = RichTextField(
         verbose_name='Порядок доступа',
         blank=True,
-        null=True,
     )
     userlist = RichTextField(
         verbose_name='Учетные записи',
         blank=True,
-        null=True,
     )
     regulations = RichTextField(
         verbose_name='Регламентные действия',
         blank=True,
-        null=True,
     )
     additional_info = RichTextField(
         verbose_name='Дополнительная информация',
         blank=True,
-        null=True,
     )
 
     # Системное.
@@ -80,7 +70,8 @@ class ITAsset (models.Model):
     )
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        null=True,
+        on_delete=models.SET_NULL,
         related_name='itasset',
         verbose_name='Автор'
     )
@@ -93,7 +84,6 @@ class ITAsset (models.Model):
         upload_to='itasset/',
         blank=True
     )
-
 
     def __str__(self):
         return self.title

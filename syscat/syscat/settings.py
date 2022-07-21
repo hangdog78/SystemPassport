@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'itasset.apps.ITAssetConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
-    'sorl.thumbnail',
     'ckeditor',
     'ckeditor_uploader',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

@@ -4,15 +4,14 @@
 {% endblock title %}
 {% block content %}
   <h2>Последние активы:</h2>
-  {% load cache %}
-  {% cache 20 index_page page_obj.number %}
   {% for asset in page_obj|slice:'-3:' %}
     {% include 'includes/assetcard.html' %}
+    <br>
   {% endfor %}
   <div class="clearfix">
-    <a class="btn btn-outline-primary float-end" role="button" 
-    href="{% url 'itasset:itasset_list' %}">Все активы&nbsp;⇒
+    <a class="btn btn-outline-primary float-end"
+       role="button"
+       href="{% url 'itasset:itasset_list' %}">Все активы&nbsp;⇒
     </a>
   </div>
-  {% endcache %}
 {% endblock content %}

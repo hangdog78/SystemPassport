@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 syscat/media/
+syscat/uploads/
