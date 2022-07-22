@@ -1,10 +1,15 @@
+{% load static %}
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-lg-8 mx-auto">
-        <ul class="list-inline text-center">
+        <ul class="list-inline text-center" style = "font-size: 16px;">
           <li>
-            <p>© {{ year }} Copyright <span style="color:red">Sy</span>cat</p>    
+            <img src="{% static 'img/fav/favicon-32x32.png' %}">
+          </li>
+          <li>
+            <br>
+            <p>© {{ year }} Copyright Khizhnyak R.</p>    
           </li>
         </ul>
       </div>

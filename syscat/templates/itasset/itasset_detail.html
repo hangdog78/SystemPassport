@@ -7,109 +7,94 @@
   <h1>{{ itasset.title }}</h1>
 {% endblock page_header %}
 {% block content %}
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-3 offset-md-1">
-            <h2 class="section-heading">
-              <p>Разделы</p>
-            </h2>
-            <ul>
-              <li>
-                <a href="#description">Описание системы</a>
-              </li>
-              <li>
-                <a href="#topology">Описание топологии</a>
-              </li>
-            </ul>
-        </div>
-        <div class="col-md-10 col-lg-7 offset-md-1">
-          <a id="description">
-            <h2 class="section-heading">Описание системы.</h2>
-          </a>
+<div class="container position relative">
+  <h1 class="center">Паспорт актива</h1>
+  <article class="episode">
+    <div class="episode__number">01</div>
+    <div class="episode__content">
+      <div class="title">Описание системы</div>
+        <div class="story">
           <p>{{ itasset.description|safe }}</p>
-          
-          <a id="topology">
-            <h2 class="section-heading">Описание топологии.</h2>
-          </a>
-          
+        </div>
+      </div>
+    </div>
+  </article>
+  <article class="episode">
+    <div class="episode__number">02</div>
+    <div class="episode__content">
+      <div class="title">Описание топологии</div>
+        <div class="story">
+          <p class="title">Размещение</p>
           <p>{{ itasset.allocation|safe }}</p>
+          <p class="title">Сервера/инстансы</p>
           <p>{{ itasset.instances|safe }}</p>
+          
+          <p class="title">Адресное пространство</p>
           <figure>
             <blockquote class="blockquote">
               <p class="mb-0">{{ itasset.ipscope|safe }}</p>
             </blockquote>
           </figure>
+          <p class="title">Зависимости ПО и версии</p>
           <p>{{ itasset.relations|safe }}</p>
+          <p class="title">Текущие настройки</p>
           <p>{{ itasset.settings|safe }}</p>
-          
-          <a id="components">
-          <h2 class="section-heading">Компоненты системы.</h2>
-          </a>
-          <p>{{ itasset.components|safe }}</p>
-          
-          <a id="management">
-          <h2 class="section-heading">Порядок управления.</h2>
-          </a>
-          <p>{{ itasset.management|safe }}</p>
-          
-          <a id="access">
-          <h2 class="section-heading">Управление доступом.</h2>
-          </a>
-          <p>{{ itasset.access|safe }}</p>
         </div>
-      </div>
     </div>
   </article>
+  <article class="episode">
+    <div class="episode__number">03</div>
+    <div class="episode__content">
+      <div class="title">Компоненты системы</div>
+        <div class="story">
+            <p>{{ itasset.components|safe }}</p>
+        </div>
+    </div>
+  </article>
+  <article class="episode">
+    <div class="episode__number">04</div>
+    <div class="episode__content">
+      <div class="title">Порядок управления</div>
+        <div class="story">
+             <p>{{ itasset.management|safe }}</p>
+        </div>
+    </div>
+  </article>
+  <article class="episode">
+    <div class="episode__number">05</div>
+    <div class="episode__content">
+      <div class="title">Порядок доступа</div>
+        <div class="story">
+          <p>{{ itasset.access|safe }}</p>
+        </div>
+    </div>
+  </article>   
+  <article class="episode">
+    <div class="episode__number">06</div>
+    <div class="episode__content">
+      <div class="title">Учетные записи</div>
+        <div class="story">
+          <p>{{ itasset.userlist|safe }}</p>
+        </div>
+    </div>
+  </article>   
+  <article class="episode">
+    <div class="episode__number">07</div>
+    <div class="episode__content">
+      <div class="title">Регламентные действия</div>
+        <div class="story">
+          <p>{{ itasset.regulations|safe }}</p>
+        </div>
+    </div>
+  </article>   
+  <article class="episode">
+    <div class="episode__number">08</div>
+    <div class="episode__content">
+      <div class="title">Дополнительная информация</div>
+        <div class="story">
+          <p>{{ itasset.additional_info|safe }}</p>
+        </div>
+    </div>
+  </article>   
+</div>     
 {% endblock content %}
-<div class="row">
-  <div class="col-md-10 col-lg-3 offset-md-1">
-    <div class="toc">
-      <p>Cuprins</p>
-      <ul>
-        <li id="inceput-2">
-          <a href="#">Început</a>
-        </li>
-        <li id="detaliitehnice-1">
-          <a href="#detaliitehnice">Detalii tehnice</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-10 col-lg-7 offset-md-1 offset-lg-0">
-    <div class="text">
-      <p style="font-family: Roboto, sans-serif;">
-        <br />
-        <em>Turnul Eiffel (în franceză La tour Eiffel) este o construcție faimoasă pe schelet de oțel din Paris ce măsoară 324 m înălțime. Turnul a devenit simbolul Franței cel mai răspândit la nivel mondial. A fost conceput de către Émile Nouguier, Maurice Koechlin și Stephen Sauvestre, angajați la Eiffel și Co. Gustave Eiffel, inițial reticent cu privire la proiect, a devenit ulterior un mare susținător al său și a cumpărat brevetul. Turnul, care poartă numele său, este una dintre principalele destinații turistice ale Parisului și lumii, cu mai mult de 5,5 milioane de vizitatori anual. Turnul și-a primit cel de-al 200.000.000 vizitator la 28 noiembrie 2002.</em>
-        <br />
-      </p>
-      <p style="font-family: Roboto, sans-serif;">
-        <br />
-        <em>  Structura a fost construită între anii 1887-1889. Aceasta urma să servească drept arc de intrare la Expoziția Universală (1889), un târg mondial ce sărbătorea centenarul Revoluției franceze. A fost inaugurat la 31 martie 1889 și deschis pentru public la 6 mai. 300 de muncitori au unit 18.038 de piese de oțel pudlat⁠(en), folosind două milioane și jumătate de nituri. Luând în considerare standardele de siguranță din acel moment, este remarcabil faptul că un singur muncitor a murit la construcția turnului, și anume în timpul instalării lifturilor. Lifturile originale funcționau cu ajutorul unui sistem hidraulic, pe când lifturile actuale sunt electrice.</em>
-        <br />
-        <em>Turnul are 300 m înălțime, excluzând antena din vârf, ce mai adaugă 20 de metri, și o greutate de peste 10.000 de tone. Când a fost construit era cea mai înaltă clădire din lume. Întreținerea turnului include utilizarea a 50 de tone de vopsea maro închis, la fiecare 7 ani. </em>
-        <br />
-        <br />
-      </p>
-      <h2 id="detaliitehnice-2">Detali tehnice</h2>
-      <p>
-        <em>   Depinzând de temperatura aerului, Turnul Eiffel își schimbă înălțimea cu câțiva centimetri datorită contracției și dilatării aliajului de metale.Cel puțin la începuturile sale, publicul a întâmpinat cu multă reticență această construcție, considerând-o inestetică. Astăzi însă este considerat drept simbolul orașului și una dintre cele mai frapante piese de artă arhitecturală din lume. Unul dintre clișeele hollywoodiene este priveliștea de la o fereastră pariziană, care întotdeauna include Turnul Eiffel.La început, Eiffel a primit permisiunea de a lăsa monumentul în viață timp de 20 de ani, dar ținând cont că oferea o serie de beneficii în domeniul comunicațiilor, s-a renunțat la demontarea sa.</em>
-        <br />
-        <br />
-      </p>
-      <figure class="figure">
-        <img class="figure-img" src="dt.jpg" />
-        <figcaption class="figure-caption" style="font-family: Roboto, sans-serif;">
-          Turnul Eiffel, 1 februarie 2022
-        </figcaption>
-      </figure>
-      <p style="font-family: Roboto, sans-serif;">
-        <em>   Turnul are 3 niveluri: accesul publicului la primul și al doilea nivel se poate face atât pe scări, cât și cu liftul, în schimb accesul la ultimul nivel se face exclusiv cu liftul.</em>
-        <br />
-        <em>Clădirea, unde lucrează 500 de persoane (250 de salariați direcți ai SETE și 250 ai diferiților concesionari ai monumentului), este deschisă publicului pe tot parcursul anului. Turnul Eiffel este înscris ca monument istoric din 24 iunie 1964 și face parte din Patrimoniul mondial UNESCO din anul 1991, împreună cu alte monumente pariziene.Furnizorul materialului de construcție pentru Turnul Eiffel a fost compania Forges et Usines Fould-Dupont.Minereul de fier utilizat a fost extras în Algeria, la Zaccar și Rouina.</em>
-        <br />
-        <br />
-      </p>
-    </div>
-  </div>
-</div>

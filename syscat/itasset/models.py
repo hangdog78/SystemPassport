@@ -5,6 +5,34 @@ from ckeditor.fields import RichTextField
 User = get_user_model()
 
 
+class  ITAssetGroup (models.Model):
+    '''Типы активов. '''
+    title = models.CharField(
+        verbose_name='Наименование группы',
+        max_length=200
+    )
+    slug = models.SlugField(
+        verbose_name='URL идентификатор',
+        unique=True
+    )
+    description = models.TextField(
+        verbose_name='Описание группы'
+    )
+    image = models.ImageField(
+        'Баннер группы',
+        upload_to='itasset/group',
+        blank=True
+    )
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
+
+    def __str__(self):
+        return self.title
+
+     
 class ITAsset (models.Model):
     ''' Описание ИТ актива. '''
     title = models.CharField(
@@ -81,8 +109,17 @@ class ITAsset (models.Model):
     )
     image = models.ImageField(
         'Баннер актива',
-        upload_to='itasset/',
+        upload_to='itasset/assets/',
         blank=True
+    )
+    group = models.ForeignKey(
+        ITAssetGroup,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='itasset',
+        verbose_name='Группа активов',
+        help_text='Группа, к которой будет относиться актив'
     )
 
     def __str__(self):

@@ -6,12 +6,10 @@
   </span>
 {% endblock page_header %}
 {% block content %}
-  <div class="container py-5">
     {% include 'includes/paginator.html' %}
     {% for asset in page_obj %}
       {% include 'includes/assetcard.html' %}
       <br>
     {% endfor %}
     {% include 'includes/paginator.html' %}
-  </div>
 {% endblock content %}
