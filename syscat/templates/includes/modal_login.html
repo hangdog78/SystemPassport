@@ -1,0 +1,53 @@
+{% load static %}
+<div id="id01" class="modal">
+  <form class="modal-content animate"
+        action="{% url 'users:login' %}"
+        method="post">
+    {% csrf_token %}
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+    <div class="screen__content">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'"
+              class="close"
+              title="Close Modal">&times;</span>
+        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      </div>
+      <div class="container" style = "margin: 54px auto;">
+        <label for="username">
+          <b>Логин</b>
+        </label>
+        <input type="text" placeholder="Имя пользователя" name="username" required>
+        <label for="password">
+          <b>Пароль</b>
+        </label>
+        <input type="password" placeholder="Пароль" name="password" required>
+        <button class="button login__submit" type="submit">
+          <span class="button__text">ВОЙТИ</span>
+          <i class="button__icon fa fa-chevron-right" style="font-size:16px"></i>
+        </button>
+        <br/>
+        <style>
+                div {width: 100%;}
+                a {display: block; text-align: center; font-size: 10pt; color:lightgray;}
+        </style>
+        <a class="forgot" href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

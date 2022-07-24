@@ -6,12 +6,7 @@
   <h1>Вход в систему</h1>
 {% endblock page_header %}
 {% block content %}
-  <div class="screen" 
-  style =   "left: 50%;
-	margin-left: -50vw;
-	margin-right: -50vw;
-	position: relative;
-	right: 50%;">
+  <div class="screen">
     <div class="screen__content">
       <form class="login" method="post" action="{% url 'users:login' %}">
         {% csrf_token %}

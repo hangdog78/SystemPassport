@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{% static 'css/cards-list.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/paginator.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/float_m.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/modal_login.css' %}"/>
         <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}"/>
         <link rel="icon" href="{% static 'img/fav/favicon.ico' %}"  type="image">
         <link rel="apple-touch-icon"
@@ -64,7 +65,7 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link"  href="{% url 'users:login' %}">ВОЙТИ</a>
+                                <a class="nav-link"  onclick="document.getElementById('id01').style.display='block'" >ВОЙТИ</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -100,7 +101,9 @@
                 {% endblock bot_pagination %}
             </div>
         {% include 'includes/footer.html' %}
+        {% include 'includes/modal_login.html' %}
         </main>
         <script src="{% static 'js/script.min.js' %}"></script>
     </body>
+
 </html>

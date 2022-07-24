@@ -56,7 +56,7 @@ def asset_create(request):
                   {'form': form, 'is_edit': False})
 
 
-@login_required(login_url='users:login')
+@login_required
 def itasset_list(request):
     template = 'itasset/group_assets.html'
 
