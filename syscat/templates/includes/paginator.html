@@ -1,27 +1,27 @@
-<div class="pagination-wrapper">
-  <div class="pagination justify-content-center">
-      {% if page_obj.has_other_pages %}
+{% if page_obj.has_other_pages %}
+  <div class="pagination-wrapper">
+    <div class="pagination justify-content-center">
       {% if page_obj.has_previous %}
-        <a class="prev page-numbers" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">«</span> </a>
+        <a class="prev page-numbers"
+           href="?page={{ page_obj.previous_page_number }}"
+           aria-label="Previous"><span aria-hidden="true">«</span> </a>
       {% else %}
-        <a class="prev page-numbers disabled"
-          aria-label="Previous"><span aria-hidden="true">«</span> </a>
+        <a class="prev page-numbers disabled" aria-label="Previous"><span aria-hidden="true">«</span> </a>
       {% endif %}
-
       {% for i in pages_count %}
         {% if page_obj.number == i  %}
-        <span aria-current="page" class="page-numbers current">{{ i }}</span>
+          <span aria-current="page" class="page-numbers current">{{ i }}</span>
         {% else %}
           <a class="page-numbers" href="?page={{ i }}">{{ i }}</a>
         {% endif %}
       {% endfor %}
-
       {% if page_obj.has_next %}
-        <a class="next page-numbers" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">»</span></a>
+        <a class="next page-numbers"
+           href="?page={{ page_obj.next_page_number }}"
+           aria-label="Next"><span aria-hidden="true">»</span></a>
       {% else %}
         <a class="next page-numbers disabled" aria-label="Next"><span aria-hidden="true">»</span></a>
       {% endif %}
-      {% endif %}
+    </div>
   </div>
-</div>
-
+{% endif %}

@@ -1,11 +1,14 @@
+
+from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.db import models
-from ckeditor.fields import RichTextField
+
+from .fields import SecureCharField
 
 User = get_user_model()
 
 
-class  ITAssetGroup (models.Model):
+class ITAssetGroup (models.Model):
     '''Типы активов. '''
     title = models.CharField(
         verbose_name='Наименование группы',
@@ -32,12 +35,12 @@ class  ITAssetGroup (models.Model):
     def __str__(self):
         return self.title
 
-     
+
 class ITAsset (models.Model):
     ''' Описание ИТ актива. '''
     title = models.CharField(
         max_length=255,
-        verbose_name='Описание ИТ актива')
+        verbose_name='Наименование актива')
     description = models.TextField(
         verbose_name='Описание функционала',
         help_text='Описание основного функционала'
@@ -78,9 +81,10 @@ class ITAsset (models.Model):
         verbose_name='Порядок доступа',
         blank=True,
     )
-    userlist = RichTextField(
+    userlist = SecureCharField(
         verbose_name='Учетные записи',
         blank=True,
+        max_length=1024,
     )
     regulations = RichTextField(
         verbose_name='Регламентные действия',

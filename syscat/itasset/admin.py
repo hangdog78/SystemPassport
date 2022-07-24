@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import ITAsset
+from .models import ITAsset, ITAssetGroup
 
 
 class ITAssetAdmin(admin.ModelAdmin):
-    list_display =  (
+    list_display = (
         'pk',
         'title',
         'description',
@@ -24,6 +24,14 @@ class ITAssetAdmin(admin.ModelAdmin):
     )
     list_filter = ('title', 'slug')
     empty_value_display = '-пусто-'
-    
+
+
+class ITAssetGroupAdmin (admin.ModelAdmin):
+    list_display = (
+        'pk',
+        'title',
+        'description',
+    )
 
 admin.site.register(ITAsset, ITAssetAdmin)
+admin.site.register(ITAssetGroup, ITAssetGroupAdmin)

@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)0(eim=fc&_)#eobrvf!7z++g(sw-v*l=7blu5t0om__gfqv9a'
+SECURE_STRING_SALT = 'kn+j4*^c9k26s@3p+m_)h#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.year.year',
+                'core.context_processors.not_auth.not_auth_str',
             ],
         },
     },
@@ -119,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Samara'
 
 USE_I18N = True
 
@@ -133,7 +135,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "assets"),
+    os.path.join(BASE_DIR, "media"),
+)
 
 
 MEDIA_URL = '/media/'
@@ -150,6 +155,8 @@ CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'itasset:main'
-ACCOUNT_SIGNUP_REDIRECT_URL = "itasset:main"
+ACCOUNT_SIGNUP_REDIRECT_URL = 'itasset:main'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+ENCODED_FIELD_DENIED = 'В доступе к разделу отказано'

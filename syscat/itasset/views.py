@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
 from django.utils.text import slugify
+from django.conf import settings
 
 from .forms import ITAssetForm
-from .models import ITAsset
+from .models import ITAsset, ITAssetGroup
 from .utils import _get_page
 
 
@@ -26,6 +27,7 @@ def index(request):
 def asset_detail(request, itasset_id):
     ''' Страница ассета. '''
     itasset = get_object_or_404(ITAsset, pk=itasset_id)
+    #itasset.userlist = settings.ENCODED_FIELD_DENIED
     context = {
         'itasset': itasset,
     }
@@ -57,11 +59,19 @@ def asset_create(request):
 @login_required(login_url='users:login')
 def itasset_list(request):
     template = 'itasset/group_assets.html'
-    assets = ITAsset.objects.all().order_by('title')
+
+    assets = None
+    group_id = request.GET.get('group', None)
+    if group_id is not None:
+        group = get_object_or_404(ITAssetGroup, pk=group_id)
+        assets = group.itasset.order_by('title')
+    else:
+        assets = ITAsset.objects.all().order_by('title')
 
     page_obj = _get_page(request, assets)
 
     context = {
+        'group': ITAssetGroup.objects.all(),
         'page_obj': page_obj,
         'pages_count': page_obj.paginator.page_range,
     }

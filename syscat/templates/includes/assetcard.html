@@ -1,21 +1,29 @@
 {% load thumbnail %}
-    <div class="row gy-4 gy-md-0">
-        <div class="col-md-6">
-            <div class="p-xl-5 m-xl-5">
-               {% thumbnail asset.image "400x400" crop="center" upscale=False as im %}
-              <img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="{{ im.url }}">
-              {% endthumbnail %}
-              </div>
-        </div>
-        <div class="col-md-6 d-md-flex align-items-md-center">
-            <div style="max-width: 650px;">
-                <h2 class="text-uppercase fw-bold"> {{ asset.title }}</h2>
-                <p class="my-3"  style="color:darkslategray; font-family: 'Poppins', sans-serif;">{{ asset.description }}</p>
-                <p class="post-meta" style="color:#6c757d; font-size: 18px;font-style: italic;">Добавлено: {{ asset.author }} &nbsp;
-                {{ asset.created }}
-                </p>
-                <a class="btn btn-outline-primary" role="button" 
-                href="{% url 'itasset:itasset_detail' asset.id %}"> Подробно </a>
-            </div>
+<div class="row gy-4 gy-md-0" style = "background-color: #28364112; border-radius: 26px;  padding: 10px; margin: 20px 20px">
+    <div class="col-md-5">
+        <div class="p-xl-5 m-xl-5">
+            {% thumbnail asset.image "400x400" crop="center" upscale=False as im %}
+            <img class="rounded img-fluid w-100 fit-cover" src="{{ im.url }}"/>
+            {% endthumbnail %}
         </div>
     </div>
+    <div class="col-md-7 d-md-flex align-items-md-center">
+        <div style="max-width: 750px;">
+            <h2 class="text-uppercase fw-bold">{{ asset.title }}</h2>
+            <p class="my-3"
+               style="color:darkslategray; font-family: 'Poppins', sans-serif;">{{ asset.description }}</p>
+            <p class="post-meta"
+               style="color:#6c757d;
+                      font-size: 18px;
+                      font-style: italic;">
+                Добавлено: {{ asset.author }} &nbsp;
+                {{ asset.created }}
+            </p>
+            <a class="btn btn-outline-primary" style = "border-radius: 13px;"
+               role="button"
+               href="{% url 'itasset:itasset_detail' asset.id %}">Подробно</a>
+        </div>
+        <br>
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+.floating-menu {
+    font-family: sans-serif;
+    background: #f0f1f2;
+    padding: 10px;
+    width: 90%;
+    z-index: 100;
+    position: sticky;
+    border-radius: 13px;
+    margin: auto auto;
+    overflow: hidden;
+  }
+
+  .floating-menu a, 
+  .floating-menu h3 {
+    font-size: 0.9em;
+    display: block;
+    margin: 0 0.5em;
+    color: #1c272d;
+  }
+
+  .floating-menu a:hover {
+    font-weight: bold;
+  }
+  

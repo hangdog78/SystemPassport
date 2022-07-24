@@ -9,25 +9,31 @@
 {% block page_header %}
     <h1>Создание паспорта актива</h1>
 {% endblock page_header %}
+{% block floating_menu %}
+  <nav class="floating-menu">
+    <h3>Приложить файлы</h3>
+    <br>
+  </nav>
+{% endblock floating_menu %}
 {% block content %}
-    <div class="row justify-content-center">
-        <div class="col-md-8 p-5">
-            <div class="form-group" enctype="multipart/form-data">
-                {% include 'includes/check_errors.html' %}
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% include 'includes/fields.html' %}
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">
-                            {% if is_edit %}
-                                Сохранить
-                            {% else %}
-                                Добавить
-                            {% endif %}
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7  align-items-md-center">
+        {% include 'includes/check_errors.html' %}
+        </div>
+        <div class="col-md-7 align-items-md-center">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'includes/fields.html' %}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary" style = "border-radius: 13px;">
+                        {% if is_edit %}
+                            Сохранить
+                        {% else %}
+                            Добавить
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock content %}

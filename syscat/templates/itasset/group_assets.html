@@ -5,11 +5,27 @@
     <p>Список активов</p>
   </span>
 {% endblock page_header %}
+
+{% block top_pagination %}
+  {% include 'includes/paginator.html' %}
+{% endblock top_pagination %}
+
+{% block floating_menu %}
+  <nav class="floating-menu">
+    <h3>Группы активов</h3>
+    <br>
+    {% for gr in group %}<a href='{{ request.path }}?group={{ gr.id }}'>{{ gr.title }}</a>{% endfor %}
+  </nav>
+{% endblock floating_menu %}
+
 {% block content %}
-    {% include 'includes/paginator.html' %}
-    {% for asset in page_obj %}
-      {% include 'includes/assetcard.html' %}
-      <br>
-    {% endfor %}
-    {% include 'includes/paginator.html' %}
+  {% for asset in page_obj %}
+    {% include 'includes/assetcard.html' %}
+    <br>
+  {% endfor %}
 {% endblock content %}
+
+{% block bot_pagination %}
+  {% include 'includes/paginator.html' %}
+{% endblock bot_pagination %}
+

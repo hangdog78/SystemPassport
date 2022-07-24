@@ -3,15 +3,15 @@
   Последние обновления на сайте
 {% endblock title %}
 {% block content %}
-  <h2>Последние активы:</h2>
-  {% for asset in page_obj|slice:'0:3' %}
-    {% include 'includes/assetcard.html' %}
-    <br>
-  {% endfor %}
-  <div class="clearfix">
-    <a class="btn btn-outline-primary float-end"
-       role="button"
-       href="{% url 'itasset:itasset_list' %}">Все активы&nbsp;⇒
-    </a>
-  </div>
+    <h2 class="center" style = "margin: 1em;">Последние активы:</h2>
+    {% for asset in page_obj|slice:'0:3' %}
+      {% include 'includes/assetcard.html' %}
+      <br>
+    {% endfor %}
+    <div class="clearfix">
+      <a class="btn btn-outline-primary float-end "
+         style = "border-radius: 13px;" role="button"
+         href="{% url 'itasset:itasset_list' %}">Все активы&nbsp;⇒
+      </a>
+    </div>
 {% endblock content %}
