@@ -133,3 +133,5 @@ class ITAsset (models.Model):
         ordering = ('-created',)
         verbose_name = 'ИТ Актив'
         verbose_name_plural = 'ИТ актив'
+
+

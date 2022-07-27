@@ -33,7 +33,10 @@ def index(request):
 def asset_detail(request, itasset_id):
     ''' Страница ассета. '''
     itasset = get_object_or_404(ITAsset, pk=itasset_id)
-    itasset.userlist = settings.ENCODED_FIELD_DENIED
+
+    if request.user != itasset.author:
+        itasset.userlist = settings.ENCODED_FIELD_DENIED
+    
     context = {
         'itasset': itasset,
     }

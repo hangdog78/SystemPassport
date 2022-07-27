@@ -1,27 +1,19 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;	
-	font-family: Raleway, sans-serif;
-}
-
-.screen {		
-	background: linear-gradient(90deg, #283641, #3b4e5a);		
-	position: relative;	
+.screen {
+	background: linear-gradient(90deg, #283641, #3b4e5a);
+	position: relative;
 	height: 600px;
-	width: 360px;	
+	width: 360px;
 	box-shadow: 0px 0px 24px #283641;
-	border-radius: 13px;
 }
 
 .screen__content {
 	z-index: 1;
-	position: relative;	
+	position: relative;
 	height: 100%;
-	
+
 }
 
-.screen__background {		
+.screen__background {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -29,7 +21,7 @@
 	bottom: 0;
 	z-index: 0;
 	-webkit-clip-path: inset(0 0 0 0);
-	clip-path: inset(0 0 0 0);	
+	clip-path: inset(0 0 0 0);
 }
 
 .screen__background__shape {
@@ -40,18 +32,18 @@
 .screen__background__shape1 {
 	height: 520px;
 	width: 520px;
-	background: #FFF;	
+	background: #FFF;
 	top: -50px;
-	right: 120px;	
+	right: 120px;
 	border-radius: 0 72px 0 0;
 }
 
 .screen__background__shape2 {
 	height: 220px;
 	width: 220px;
-	background: #91b1c0;	
+	background: #91b1c0;
 	top: -172px;
-	right: 0;	
+	right: 0;
 	border-radius: 32px;
 }
 
@@ -60,28 +52,28 @@
 	width: 190px;
 	background: linear-gradient(270deg, #1C272d, #3b4e5a);
 	top: -24px;
-	right: 0;	
+	right: 0;
 	border-radius: 32px;
 }
 
 .screen__background__shape4 {
 	height: 400px;
 	width: 200px;
-	background: #afcad3;	
+	background: #afcad3;
 	top: 420px;
-	right: 50px;	
+	right: 50px;
 	border-radius: 60px;
 }
 
 .login {
-	width: 380px;
+	width: 360px;
 	padding: 30px;
 	padding-top: 156px;
 }
 
 .login__field {
-	padding: 20px 0px;	
-	position: relative;	
+	padding: 20px 0px;
+	position: relative;
 }
 
 .login__icon {
@@ -118,12 +110,12 @@
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 92%;
+	width: 100%;
 	color: #3b4e5a;
 	box-shadow: 0px 2px 2px #283641;
 	cursor: pointer;
 	transition: .2s;
-	
+
 }
 
 .login__submit:active,
@@ -139,7 +131,7 @@
 	color: #7875B5;
 }
 
-.social-login {	
+.social-login {
 	position: absolute;
 	height: 140px;
 	width: 160px;
@@ -158,10 +150,10 @@
 .social-login__icon {
 	padding: 20px 10px;
 	color: #fff;
-	text-decoration: none;	
+	text-decoration: none;
 	text-shadow: 0px 0px 8px #7875B5;
 }
 
 .social-login__icon:hover {
-	transform: scale(1.5);	
+	transform: scale(1.5);
 }

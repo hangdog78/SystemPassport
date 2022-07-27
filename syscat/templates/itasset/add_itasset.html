@@ -14,12 +14,10 @@
         <h1>Добавить актив</h1>
     {% endif %}
 {% endblock page_header %}
-{% block content %}
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-7  align-items-md-center">
+{% block overall_content %}
+    <div class="row justify-content-center">
+        <div class="container" style="background-color: #28364112; border-radius: 26px; width:70%;">
         {% include 'includes/check_errors.html' %}
-        </div>
-        <div class="col-md-7 align-items-md-center">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% include 'includes/fields.html' %}
@@ -35,4 +33,4 @@
             </form>
         </div>
     </div>
-{% endblock content %}
+{% endblock overall_content %}

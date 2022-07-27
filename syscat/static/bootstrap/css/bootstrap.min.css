@@ -3255,7 +3255,7 @@ fieldset:disabled .btn {
   background-color: #0d6efd;
   border-color: #0d6efd;
   border-radius: 13px;
-  
+
 }
 
 .btn-primary:hover {
@@ -3614,15 +3614,15 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-  color: #629ed6;
-  border-color: #629ed6;
+  color: #7fa1ad;
+  border-color: #7fa1ad;
   border-radius: 13px;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #629ed6;
-  border-color: #629ed6;
+  background-color: #7fa1ad;
+  border-color: #7fa1ad;
   border-radius: 13px;
 }
 
@@ -5485,11 +5485,7 @@ fieldset:disabled .btn {
   color: #6c757d
 }
 
-.pagination {
-  display: flex;
-  padding-left: 0;
-  list-style: none
-}
+
 
 .page-link {
   position: relative;
@@ -12468,7 +12464,7 @@ header.masthead .site-heading {
   header.masthead .page-heading,
   header.masthead .post-heading,
   header.masthead .site-heading {
-    padding: 200px 0
+    padding: 150px 0
   }
 }
 
