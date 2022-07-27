@@ -16,6 +16,8 @@ urlpatterns = [
     path('create/',
          views.asset_create, 
          name='itasset_create'),
+    # Редактирование актива
+    path('itasset/<int:asset_id>/edit/', views.asset_edit, name='itasset_edit'),
     # Страница со списком активов.
     path('itasset/', views.itasset_list, name='itasset_list'),
 ]

@@ -1,30 +1,26 @@
-body {
-  font-family: sans-serif;
-}
-
 a {
   text-decoration: none;
 }
 
 .pagination-wrapper {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 20px;
+  width: auto;
 }
 
 .pagination {
   display: inline-block;
   height: 50px;
-  margin-top: 20px;
-  padding: 0 20px;
+  padding: 20px auto 20px auto;
   border-radius: 35px;
   background-color: #eee;
+  width: auto;
 }
 
 @media only screen and (max-width: 1199px) {
   .pagination {
     height: 50px;
-    margin-top: 50px;
-    padding: 0 10px;
+    padding: 10px auto 20px auto;
     border-radius: 25px;
   }
 }

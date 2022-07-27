@@ -58,6 +58,13 @@ class ITAssetForm(forms.ModelForm):
         label="Дополнительная информация",
         required=False
     )
+    file_field = forms.FileField(
+        widget=forms.ClearableFileInput(
+            attrs={'multiple': True}
+            ),
+        label = "Файлы",
+        required = False,
+        help_text="Конфигурационные файлы и т.д.")
 
     class Meta:
         model = ITAsset

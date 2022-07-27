@@ -8,8 +8,9 @@
         <meta name="description" content="SyCat IT Systems catalogue"/>
         <link rel="stylesheet"
               href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/cards-list.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/mycss.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/paginator.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/cards-list.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/float_m.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/modal_login.css' %}"/>
         <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}"/>
@@ -73,7 +74,7 @@
             </div>
         </nav>
         <header class="masthead"
-                style="background-image:url('{% static 'img/bg.PNG' %}'); height: 400px;">
+                style="background-image:url('{% static 'img/bg.PNG' %}'); height: 450px;">
             <div class="overlay"></div>
                     
                         <div class="site-heading mx-auto position-relative">
@@ -85,25 +86,28 @@
                     
         </header>
         <main>
+            
             <div class="row">
-                {% block top_pagination %}
-                {% endblock top_pagination %}
                 <div class="col-md-3 col-xxl-3">
                     {% block floating_menu %}
                     {% endblock floating_menu %}
                 </div>
-                <div class="col-md-6 col-xxl-8" style="background-color: #28364112; border-radius: 26px;">
+                <div class="col-md-7 col-xxl-9" style="background-color: #28364112; border-radius: 26px;">
+                        {% block top_pagination %}
+                        {% endblock top_pagination %}
                         {% block content %}
                             Здесь будет контент
                         {% endblock content %}
+                        {% block bot_pagination %}
+                        {% endblock bot_pagination %}
                 </div>
-                {% block bot_pagination %}
-                {% endblock bot_pagination %}
+                
+                
             </div>
         {% include 'includes/footer.html' %}
         {% include 'includes/modal_login.html' %}
         </main>
-        <script src="{% static 'js/script.min.js' %}"></script>
+    <script src="{% static 'js/script.min.js' %}"></script>
     </body>
-
+    
 </html>
