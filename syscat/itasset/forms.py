@@ -58,7 +58,7 @@ class ITAssetForm(forms.ModelForm):
         label="Дополнительная информация",
         required=False
     )
-    file_field = forms.FileField(
+    files = forms.FileField(
         widget=forms.ClearableFileInput(
             attrs={'multiple': True}
             ),
@@ -83,5 +83,6 @@ class ITAssetForm(forms.ModelForm):
             'access',
             'userlist',
             'regulations',
-            'additional_info'
+            'additional_info',
+            'files'
             )

@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/file_card.css' %}"/>
+<div class="card-group d-sm-inline-flex">
+{% for file in files %}
+<a href="{% static file.asset_file %}">
+<div class="file_card" >
+  <img class="file_card-image" src="{% static 'img/file.svg' %}" alt="Card image cap">
+  <div class="file_card-content"> 
+    <p class="file_card-text">{{ file.filename }}</p>
+  </div>
+</div>
+</a>
+{% endfor %}
+</div>

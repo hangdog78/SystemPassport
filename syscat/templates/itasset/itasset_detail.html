@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load static %}
 {% block title %}
   ИТ актив {{ itasset.title|slice:':30' }}
 {% endblock title %}
@@ -10,7 +11,9 @@
   <nav class="floating-menu">
     <h3>Файлы</h3>
     <br>
-  </nav>
+    <div class="card-group d-sm-inline-flex">
+      {% include 'includes/file_cards.html' %}
+    </div>
 {% endblock floating_menu %}
 {% block content %}
     <h1 class="center" style = "margin: 1em;">Паспорт актива</h1>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ITAsset, ITAssetGroup
+from .models import ITAsset, ITAssetGroup, ITAssetFile
 
 
 class ITAssetAdmin(admin.ModelAdmin):
@@ -33,5 +33,14 @@ class ITAssetGroupAdmin (admin.ModelAdmin):
         'description',
     )
 
+
+class ITAssetFileAdmin (admin.ModelAdmin):
+    list_display = (
+        'pk',
+        'asset_file',
+        'asset',
+    )
+
 admin.site.register(ITAsset, ITAssetAdmin)
 admin.site.register(ITAssetGroup, ITAssetGroupAdmin)
+admin.site.register(ITAssetFile, ITAssetFileAdmin)

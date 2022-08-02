@@ -28,6 +28,11 @@
       {{ field.help_text|safe }}
       </small>
     {% endif %}
+    {% if field.name == "files" %}
+      {% include 'includes/file_cards.html' %}
+    {% endif %}
+
+    
 </div>
 {% endif %}
 {% endfor %}
