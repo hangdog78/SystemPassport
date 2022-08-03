@@ -27,6 +27,7 @@ SECURE_STRING_SALT = 'kn+j4*^c9k26s@3p+m_)h#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '192.168.31.150',
     '*',
     'localhost',
     '127.0.0.1',
