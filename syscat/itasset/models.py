@@ -163,7 +163,6 @@ class ITAssetFile (models.Model):
         return str(self.asset_file)
 
     def filename(self):
-        print(self.asset_file.name)
         return os.path.basename(self.asset_file.name)
 
     class Meta:
