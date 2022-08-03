@@ -1,5 +1,6 @@
 {% load thumbnail %}
-<div class="row gy-4 gy-md-0" style = "background-color: #28364112; border-radius: 26px;  padding: 10px; margin: 20px 20px">
+{% load static %}
+<div class="row gy-4 gy-md-0" style = "background-color: #28364112; border-radius: 26px;  padding: 10px auto; margin: 20px auto 20px auto ">
     <div class="col-md-5">
         <div class="p-xl-5 m-xl-5">
             {% thumbnail asset.image "400x400" crop="center" upscale=False as im %}
@@ -10,18 +11,27 @@
     <div class="col-md-7 d-md-flex align-items-md-center">
         <div style="max-width: 750px;">
             <h2 class="text-uppercase fw-bold">{{ asset.title }}</h2>
-            <p class="my-3"
-               style="color:darkslategray; font-family: 'Poppins', sans-serif;">{{ asset.description }}</p>
+            <pre>{{ asset.description }}</pre>
             <p class="post-meta"
                style="color:#6c757d;
                       font-size: 18px;
                       font-style: italic;">
-                Добавлено: {{ asset.author }} &nbsp;
+                Последние изменения: {{ asset.author }} &nbsp;
                 {{ asset.created }}
             </p>
+            {% if user.is_authenticated %}
+                {% if asset.author == user %}
+                    <a class="btn btn-outline-primary" style = "border-radius: 13px;" role="button" href="{% url 'itasset:itasset_edit' asset.id %}" >
+                        <img src="{% static 'img/edit.svg' %}"  style= "width:30px; height:30px;" title="Редактировать" >
+                    </a>
+                {% endif %}
+            {% endif %}
             <a class="btn btn-outline-primary" style = "border-radius: 13px;"
                role="button"
-               href="{% url 'itasset:itasset_detail' asset.id %}">Подробно</a>
+               href="{% url 'itasset:itasset_detail' asset.id %}">
+                <img src="{% static 'img/open.svg' %}"  style= "width:30px; height:30px;" title="Подробно" >
+               
+            </a>
         </div>
         <br>
     </div>

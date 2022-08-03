@@ -14,26 +14,26 @@
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'"
               class="close"
-              title="Close Modal">&times;</span>
-        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+              title="Закрыть">&times;</span>
+        <img src="{% static 'img/account.svg' %}"  alt="Avatar" class="avatar">
       </div>
       <div class="container" style = "margin: 54px auto;">
-        <label for="username">
-          <b>Логин</b>
+        <label for="username" style = "font-weight: 100;">
+          <b>Имя пользователя</b>
         </label>
         <input type="text" placeholder="Имя пользователя" name="username" required>
-        <label for="password">
+        <label for="password" style = "font-weight: 100;">
           <b>Пароль</b>
         </label>
         <input type="password" placeholder="Пароль" name="password" required>
-        <button class="button login__submit" type="submit">
+        <button class="button modal_login__submit" type="submit">
           <span class="button__text">ВОЙТИ</span>
           <i class="button__icon fa fa-chevron-right" style="font-size:16px"></i>
         </button>
         <br/>
         <style>
                 div {width: 100%;}
-                a {display: block; text-align: center; font-size: 10pt; color:lightgray;}
+                a {display: block; text-align: center; font-size: 10pt; color:#1C272D;}
         </style>
         <a class="forgot" href="{% url 'users:password_reset' %}">Забыли пароль?</a>
       </div>

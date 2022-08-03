@@ -2,15 +2,55 @@
 {% load static %}
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<link rel="stylesheet" href="{% static 'css/accordion.css' %}"/>
+
 {% for field in form %}
-  <div class="form-group row my-3">
+
+{% if field.field.required %}
+  <div class="container" style = "margin: 10px auto; padding-right:0px; padding-left: 0px;">
     <label for="{{ field.id_for_label }}">
       {{ field.label }}
-      {% if field.field.required %}<span class="required text-danger">*</span>{% endif %}
+      <span class="required text-danger">*</span>
     </label>
     {{ field|addclass:'form-control' }}
     {% if field.help_text %}
-      <small id="{{ field.id_for_label }}-help" class="form-text text-muted">{{ field.help_text|safe }}</small>
+      <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
+        {{ field.help_text|safe }}
+      </small>
     {% endif %}
   </div>
+{% else %}
+<button class="it_accordion" type="button"> {{ field.label }} </button>
+<div class="it_acc_panel">
+    {{ field|addclass:'form-control' }}
+    {% if field.help_text %}
+      <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
+      {{ field.help_text|safe }}
+      </small>
+    {% endif %}
+    {% if field.name == "files" %}
+      {% include 'includes/file_cards.html' %}
+    {% endif %}
+
+    
+</div>
+{% endif %}
 {% endfor %}
+<script type="text/javascript">
+var acc = document.getElementsByClassName("it_accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      panel.children[0].focus();
+    } 
+   
+  });
+}
+</script>

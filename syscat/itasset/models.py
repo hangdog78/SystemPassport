@@ -1,4 +1,6 @@
 
+import os
+
 from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -133,3 +135,40 @@ class ITAsset (models.Model):
         ordering = ('-created',)
         verbose_name = 'ИТ Актив'
         verbose_name_plural = 'ИТ актив'
+
+
+class ITAssetFile (models.Model):
+    ''' Файлы приложений '''
+    asset_file = models.FileField(
+        verbose_name='Файл',
+        upload_to='itasset/uploads/',
+        max_length=100)
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name='Содержание файла',
+    )
+    asset = models.ForeignKey(
+        ITAsset,
+        on_delete=models.CASCADE,
+        related_name='files',
+        verbose_name='Приложение'
+    )
+    created = models.DateTimeField(
+        verbose_name='Дата добавления',
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return str(self.asset_file)
+
+    def filename(self):
+        return os.path.basename(self.asset_file.name)
+
+    class Meta:
+        ordering = ('asset_file',)
+        verbose_name = 'Файл приложение'
+        verbose_name_plural = 'Файлы'
+
+    
+    

@@ -3255,7 +3255,7 @@ fieldset:disabled .btn {
   background-color: #0d6efd;
   border-color: #0d6efd;
   border-radius: 13px;
-  
+
 }
 
 .btn-primary:hover {
@@ -5485,11 +5485,7 @@ fieldset:disabled .btn {
   color: #6c757d
 }
 
-.pagination {
-  display: flex;
-  padding-left: 0;
-  list-style: none
-}
+
 
 .page-link {
   position: relative;

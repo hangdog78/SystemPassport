@@ -27,10 +27,12 @@ SECURE_STRING_SALT = 'kn+j4*^c9k26s@3p+m_)h#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '*',
     'localhost',
     '127.0.0.1',
     '[::1]',
     'testserver',
+    
 ]
 
 
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'sorl.thumbnail',
+    'syscat'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "assets"),
     os.path.join(BASE_DIR, "media"),
