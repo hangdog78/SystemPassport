@@ -61,12 +61,26 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'itasset:itasset_create' %}">ДОБАВИТЬ АКТИВ</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'users:logout' %}">ВЫЙТИ, {{ user.username }}</a>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" aria-expanded = "false" data-bs-toggle="dropdown" href="#">
+                                    {{ user.username }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item">
+                                        <a class="nav-link" href="{% url 'users:logout' %}">ВЫЙТИ</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                    <a class="nav-link"                                href="{% url 'users:password_change' %}">СМЕНИТЬ ПАРОЛЬ</a>
+                                    </li>
+
+                                </ul>
                             </li>
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link"  onclick="document.getElementById('id01').style.display='block'" >ВОЙТИ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:signup' %}">регистрация</a>
                             </li>
                         {% endif %}
                     </ul>

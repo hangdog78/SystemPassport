@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,11 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)0(eim=fc&_)#eobrvf!7z++g(sw-v*l=7blu5t0om__gfqv9a'
-SECURE_STRING_SALT = 'kn+j4*^c9k26s@3p+m_)h#'
+SECRET_KEY = os.getenv('SECRET_KEY')
+SECURE_STRING_SALT = os.getenv('SECURE_STRING_SALT')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.getenv('DEBUG_MODE', True) == 'True')
 
 ALLOWED_HOSTS = [
     '192.168.31.150',
@@ -33,9 +35,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '[::1]',
     'testserver',
-    
+    'sycat.almaz-rpe.ru',
 ]
-
 
 # Application definition
 
@@ -95,8 +96,12 @@ WSGI_APPLICATION = 'syscat.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('DB_NAME', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -156,10 +161,19 @@ PAGE_SIZE = 5
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+ENCODED_FIELD_DENIED = 'В доступе к разделу отказано'
+
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'itasset:main'
 ACCOUNT_SIGNUP_REDIRECT_URL = 'itasset:main'
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
-ENCODED_FIELD_DENIED = 'В доступе к разделу отказано'
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.filebased.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL='SyCat <sycat@almaz-rpe.ru>'
