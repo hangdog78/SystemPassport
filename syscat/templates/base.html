@@ -70,14 +70,13 @@
                                         <a class="nav-link" href="{% url 'users:logout' %}">ВЫЙТИ</a>
                                     </li>
                                     <li class="dropdown-item">
-                                    <a class="nav-link"                                href="{% url 'users:password_change' %}">СМЕНИТЬ ПАРОЛЬ</a>
+                                    <a class="nav-link" href="{% url 'users:password_change' %}">СМЕНИТЬ ПАРОЛЬ</a>
                                     </li>
-
                                 </ul>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link"  onclick="document.getElementById('id01').style.display='block'" >ВОЙТИ</a>
+                                <a class="nav-link"  onclick="document.getElementById('id01').style.display='block'" >войти</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'users:signup' %}">регистрация</a>

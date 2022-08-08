@@ -1,7 +1,10 @@
 from ckeditor.widgets import CKEditorWidget
 from django import forms
+from django.contrib.auth import get_user_model
 
 from .models import ITAsset
+
+User = get_user_model()
 
 
 class ITAssetForm(forms.ModelForm):
@@ -61,10 +64,17 @@ class ITAssetForm(forms.ModelForm):
     files = forms.FileField(
         widget=forms.ClearableFileInput(
             attrs={'multiple': True}
-            ),
-        label = "Файлы",
-        required = False,
-        help_text="Конфигурационные файлы и т.д.")
+        ),
+        label="Файлы",
+        required=False,
+        help_text="Конфигурационные файлы и т.д."
+    )
+    secured_users = forms.ModelMultipleChoiceField(
+        label="Доверенные пользователи",
+        queryset=User.objects.all().order_by("username"),
+        required=False,
+        help_text="Укажите пользователей, имеющих доступ к защищенным разделам"
+    )
 
     class Meta:
         model = ITAsset
@@ -84,5 +94,6 @@ class ITAssetForm(forms.ModelForm):
             'userlist',
             'regulations',
             'additional_info',
-            'files'
-            )
+            'files',
+            'secured_users'
+        )

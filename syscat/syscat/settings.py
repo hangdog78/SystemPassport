@@ -147,7 +147,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "assets"),
     os.path.join(BASE_DIR, "media"),
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/') 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -171,9 +171,10 @@ ACCOUNT_SIGNUP_REDIRECT_URL = 'itasset:main'
 
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.filebased.EmailBackend')
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND', 'django.core.mail.backends.filebased.EmailBackend')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-DEFAULT_FROM_EMAIL='SyCat <sycat@almaz-rpe.ru>'
+DEFAULT_FROM_EMAIL = 'SyCat <sycat@almaz-rpe.ru>'

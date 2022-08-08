@@ -22,6 +22,7 @@ class ITAssetAdmin(admin.ModelAdmin):
         'author',
         'slug',
     )
+    filter_horizontal = ['secured_users']
     list_filter = ('title', 'slug')
     empty_value_display = '-пусто-'
 
@@ -40,6 +41,7 @@ class ITAssetFileAdmin (admin.ModelAdmin):
         'asset_file',
         'asset',
     )
+
 
 admin.site.register(ITAsset, ITAssetAdmin)
 admin.site.register(ITAssetGroup, ITAssetGroupAdmin)

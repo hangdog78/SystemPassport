@@ -7,7 +7,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 
 class SecureCharField(models.CharField):
-    """Custom Encrypted Field"""
+    """Зашифрованное текстовое поле"""
 
     salt = bytes(settings.SECURE_STRING_SALT, 'utf-8')
     kdf = PBKDF2HMAC(algorithm=hashes.SHA256(),
@@ -20,9 +20,12 @@ class SecureCharField(models.CharField):
 
     def from_db_value(self, value, expression, connection):
         try:
-            return str(self.f.decrypt(bytes(value, 'cp1252')), encoding='utf-8')
+            return str(
+                self.f.decrypt(bytes(value, 'cp1252')),
+                encoding='utf-8'
+            )
         except Exception as error:
-            print(f"Decryption error: {error}",)
+            return str(f"Decryption error: {error}",)
 
     def get_prep_value(self, value):
         return str(self.f.encrypt(bytes(value, 'utf-8')), 'cp1252')

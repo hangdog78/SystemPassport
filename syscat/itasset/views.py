@@ -3,7 +3,6 @@ import random
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     get_object_or_404,
-    get_list_or_404,
     redirect,
     render,
     reverse
@@ -18,7 +17,9 @@ from .utils import _get_page
 
 
 def rand_slug():
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
+    return ''.join(
+        random.choice(string.ascii_letters + string.digits) for _ in range(6)
+    )
 
 
 def index(request):
@@ -40,11 +41,11 @@ def asset_detail(request, itasset_id):
     ''' Страница ассета. '''
     asset = get_object_or_404(ITAsset, pk=itasset_id)
 
-    if request.user != asset.author:
+    if request.user not in asset.secured_users.all():
         asset.userlist = settings.ENCODED_FIELD_DENIED
 
     asset_files = asset.files.all()
-    
+
     context = {
         'itasset': asset,
         'files': asset_files,
@@ -66,7 +67,7 @@ def asset_create(request):
 
             files = request.FILES.getlist('files')
             for file in files:
-                asset_file = ITAssetFile (asset_file = file)
+                asset_file = ITAssetFile(asset_file=file)
                 asset_file.created = timezone.now()
                 asset_file.description = 'Asset Uploads'
                 asset_file.asset = post
@@ -83,17 +84,19 @@ def asset_create(request):
                   {'form': form, 'is_edit': False})
 
 # Страница редактирования поста.
+
+
 @login_required(login_url='users:login')
 def asset_edit(request, asset_id):
     asset = get_object_or_404(ITAsset, pk=asset_id)
 
     if request.user != asset.author:
         return redirect(reverse('itasset:itasset_detail', args=[asset_id]))
-   
+
     asset_files = asset.files.all()
-    
+
     if request.method == 'POST':
-        
+
         form = ITAssetForm(
             request.POST or None,
             files=request.FILES or None,
@@ -104,9 +107,9 @@ def asset_edit(request, asset_id):
 
             files = request.FILES.getlist('files')
             for file in files:
-                asset_file = ITAssetFile (asset_file = file)
+                asset_file = ITAssetFile(asset_file=file)
                 asset_file.created = timezone.now()
-                asset_file.description = 'Asset Uploads'
+                asset_file.description = asset_file.filename
                 asset_file.asset = asset
                 asset_file.save()
 
@@ -119,7 +122,7 @@ def asset_edit(request, asset_id):
                       'form': form,
                       'is_edit': True,
                       'files': asset_files}
-    )
+                  )
 
 
 @login_required

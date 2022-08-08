@@ -1,4 +1,3 @@
-
 import os
 
 from ckeditor.fields import RichTextField
@@ -127,6 +126,13 @@ class ITAsset (models.Model):
         verbose_name='Группа активов',
         help_text='Группа, к которой будет относиться актив'
     )
+    secured_users = models.ManyToManyField(
+        User,
+        related_name="secured_assets",
+        verbose_name='Доверенные пользователи',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.title
@@ -169,6 +175,3 @@ class ITAssetFile (models.Model):
         ordering = ('asset_file',)
         verbose_name = 'Файл приложение'
         verbose_name_plural = 'Файлы'
-
-    
-    
