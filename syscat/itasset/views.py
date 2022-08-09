@@ -41,7 +41,8 @@ def asset_detail(request, itasset_id):
     ''' Страница ассета. '''
     asset = get_object_or_404(ITAsset, pk=itasset_id)
 
-    if request.user not in asset.secured_users.all():
+    if (request.user not in asset.secured_users.all() and
+        request.user != asset.author):
         asset.userlist = settings.ENCODED_FIELD_DENIED
 
     asset_files = asset.files.all()

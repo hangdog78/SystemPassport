@@ -33,14 +33,13 @@
   font-family: 'Sansita One', sans-serif;
   position: absolute;
   top: 55%;
-  left: 5px;
+  left: 1px;
   size: 100%, 55%;
-  padding: 1% 1%;
   font-size: 12px;
 }
 
 .file_card-title {
-  margin: 10px 0;
+  margin: 5px 0;
   text-transform: uppercase;
   font-size: 1.3em;
 }
@@ -49,7 +48,9 @@
   position: absolute;
   top: 50%;
   translate: 0, -50%;
+  margin: 5px 5px;
   color: #AAA;
+  overflow-wrap: anywhere;
 }
 
 .file_card-more {
