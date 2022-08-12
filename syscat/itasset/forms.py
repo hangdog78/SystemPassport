@@ -8,6 +8,7 @@ User = get_user_model()
 
 
 class ITAssetForm(forms.ModelForm):
+    ''' Форма создания актива. '''
     allocation = forms.CharField(
         widget=CKEditorWidget(),
         label="Размещение актива",

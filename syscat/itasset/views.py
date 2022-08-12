@@ -17,6 +17,7 @@ from .utils import _get_page
 
 
 def rand_slug():
+    ''' Генерация url. '''
     return ''.join(
         random.choice(string.ascii_letters + string.digits) for _ in range(6)
     )
@@ -38,7 +39,7 @@ def index(request):
 
 @login_required(login_url='users:login')
 def asset_detail(request, itasset_id):
-    ''' Страница ассета. '''
+    ''' Страница с детальной иформацией по активу. '''
     asset = get_object_or_404(ITAsset, pk=itasset_id)
 
     if (request.user not in asset.secured_users.all() and
@@ -56,7 +57,7 @@ def asset_detail(request, itasset_id):
 
 @login_required(login_url='users:login')
 def asset_create(request):
-    ''' Страница создания ассета.'''
+    ''' Страница создания актива.'''
     if request.method == 'POST':
         form = ITAssetForm(request.POST, files=request.FILES or None)
         if form.is_valid():
@@ -84,11 +85,10 @@ def asset_create(request):
     return render(request, 'itasset/add_itasset.html',
                   {'form': form, 'is_edit': False})
 
-# Страница редактирования поста.
-
 
 @login_required(login_url='users:login')
 def asset_edit(request, asset_id):
+    ''' Страница редакирования актива.'''
     asset = get_object_or_404(ITAsset, pk=asset_id)
 
     if request.user != asset.author:
@@ -128,6 +128,7 @@ def asset_edit(request, asset_id):
 
 @login_required
 def itasset_list(request):
+    ''' Страница списка активов по группам. '''
     template = 'itasset/group_assets.html'
 
     assets = None
